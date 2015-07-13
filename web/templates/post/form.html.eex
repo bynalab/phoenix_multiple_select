@@ -22,7 +22,19 @@
 
   <div class="form-group">
     <%= label f, :tags, "Tags" %>
-    <%= text_input f, :tags, class: "form-control" %>
+    <!-- Original generated tag -->
+    <!--%= text_input f, :tags, class: "form-control" %-->
+
+    <!-- Attempt at multi-select, which does render correctly, but only the
+    last value is in the params when you inspect conn -->
+    <!--%= select f, :tags, ["foo": "1","bar": "2","baz": "3"], class: "form-control", multiple: ""  %-->
+
+    <!-- This is what needs to be rendered for Plug to make the options into an array when the form is submitted.  Note the 'name' element -->
+    <select class="form-control" id="post_tags" multiple="" name="post[tags][]">
+      <option value="1">foo</option>
+      <option value="2">bar</option>
+      <option value="3">baz</option>
+    </select>
   </div>
 
   <div class="form-group">
