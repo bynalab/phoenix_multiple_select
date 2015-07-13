@@ -4,7 +4,7 @@ defmodule PhoenixMultipleSelect.Post do
   schema "posts" do
     field :title, :string
     field :body, :string
-    field :tags, :string
+    field :tags, {:array, :string}
 
     timestamps
   end
